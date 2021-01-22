@@ -1,0 +1,317 @@
+[
+  {
+    "id": "1",
+    "name": "Sholat",
+    "parent": "0",
+    "children": [
+      {
+        "id": "7",
+        "name": "Jenis",
+        "parent": "1",
+        "children": [
+          {
+            "id": "9",
+            "name": "Farḍu/harian",
+            "parent": "7",
+            "children": [
+              {
+                "id": "11",
+                "name": "Ṣubuḥ",
+                "parent": "9"
+              },
+              {
+                "id": "12",
+                "name": "Ẓuhur",
+                "parent": "9"
+              },
+              {
+                "id": "15",
+                "name": "'Aṣar",
+                "parent": "9"
+              },
+              {
+                "id": "16",
+                "name": "Maġrib",
+                "parent": "9"
+              },
+              {
+                "id": "17",
+                "name": "'Isya'",
+                "parent": "9"
+              },
+              {
+                "id": "18",
+                "name": "Witir (mazhab Hanafi)",
+                "parent": "9"
+              },
+              {
+                "id": "19",
+                "name": "Jum'at",
+                "parent": "9"
+              }
+            ]
+          },
+          {
+            "id": "10",
+            "name": "Farḍu kifayah",
+            "parent": "7",
+            "children": [
+              {
+                "id": "13",
+                "name": "Jenāzah",
+                "parent": "10"
+              },
+              {
+                "id": "14",
+                "name": "Ġaib",
+                "parent": "10"
+              }
+            ]
+          },
+          {
+            "id": "20",
+            "name": "Berjemaah",
+            "parent": "7",
+            "children": [
+              {
+                "id": "21",
+                "name": "Salat Jumat",
+                "parent": "20"
+              },
+              {
+                "id": "22",
+                "name": "Tarawih",
+                "parent": "20"
+              }
+            ]
+          },
+          {
+            "id": "23",
+            "name": "Salat-salat sunah",
+            "parent": "7",
+            "children": [
+              {
+                "id": "24",
+                "name": "Awwabīn",
+                "parent": "23"
+              },
+              {
+                "id": "25",
+                "name": "Ḍuḥa",
+                "parent": "23"
+              },
+              {
+                "id": "26",
+                "name": "Gerhana",
+                "parent": "23"
+              },
+              {
+                "id": "28",
+                "name": "Ḥājat",
+                "parent": "23"
+              },
+              {
+                "id": "29",
+                "name": "Tahajud",
+                "parent": "23"
+              },
+              {
+                "id": "30",
+                "name": "Rawātib",
+                "parent": "23"
+              },
+              {
+                "id": "31",
+                "name": "Taubat",
+                "parent": "23"
+              }
+            ]
+          },
+          {
+            "id": "32",
+            "name": "Salat untuk kegiatan khusus",
+            "parent": "7",
+            "children": [
+              {
+                "id": "27",
+                "name": "Istikhārah",
+                "parent": "32"
+              },
+              {
+                "id": "33",
+                "name": "'Id (Hari Raya)",
+                "parent": "32"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "8",
+        "name": "Rakaat salat dan komponennya",
+        "parent": "1",
+        "children": [
+          {
+            "id": "34",
+            "name": "Basmalah",
+            "parent": "8"
+          },
+          {
+            "id": "35",
+            "name": "Takbir",
+            "parent": "8"
+          },
+          {
+            "id": "36",
+            "name": "Berdiri",
+            "parent": "8"
+          },
+          {
+            "id": "37",
+            "name": "Duduk",
+            "parent": "8"
+          },
+          {
+            "id": "38",
+            "name": "Bacaan al-Qur'an (Tajwid)",
+            "parent": "8"
+          },
+          {
+            "id": "39",
+            "name": "Rukuk",
+            "parent": "8"
+          },
+          {
+            "id": "40",
+            "name": "Sujud",
+            "parent": "8"
+          },
+          {
+            "id": "41",
+            "name": "Tasyahud",
+            "parent": "8"
+          },
+          {
+            "id": "42",
+            "name": "Salam dalam salat",
+            "parent": "8"
+          },
+          {
+            "id": "43",
+            "name": "Sujud Sahwi",
+            "parent": "8"
+          }
+        ]
+      },
+      {
+        "id": "44",
+        "name": "Masjid dan musala",
+        "parent": "1",
+        "children": [
+          {
+            "id": "45",
+            "name": "Mihrab",
+            "parent": "44"
+          },
+          {
+            "id": "46",
+            "name": "Mimbar",
+            "parent": "44"
+          },
+          {
+            "id": "47",
+            "name": "Khotbah",
+            "parent": "44"
+          },
+          {
+            "id": "48",
+            "name": "Musala",
+            "parent": "44"
+          },
+          {
+            "id": "49",
+            "name": "Sajadah",
+            "parent": "44"
+          }
+        ]
+      },
+      {
+        "id": "50",
+        "name": "Kondisi terkait",
+        "parent": "1",
+        "children": [
+          {
+            "id": "51",
+            "name": "Azan dan Ikamah",
+            "parent": "50"
+          },
+          {
+            "id": "52",
+            "name": "Bacaan dalam salat",
+            "parent": "50"
+          },
+          {
+            "id": "53",
+            "name": "Jadwal salat",
+            "parent": "50"
+          },
+          {
+            "id": "54",
+            "name": "Kiblat",
+            "parent": "50"
+          },
+          {
+            "id": "55",
+            "name": "Doa Kunut",
+            "parent": "50"
+          },
+          {
+            "id": "56",
+            "name": "Rukun Salat",
+            "parent": "50"
+          },
+          {
+            "id": "57",
+            "name": "Sutrah",
+            "parent": "50"
+          },
+          {
+            "id": "58",
+            "name": "Safar (perjalanan) Jamak Qasar",
+            "parent": "50"
+          },
+          {
+            "id": "59",
+            "name": "Salat munfarid",
+            "parent": "50"
+          },
+          {
+            "id": "60",
+            "name": "Taharah",
+            "parent": "50"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Puasa",
+    "parent": "0"
+  },
+  {
+    "id": "4",
+    "name": "Zakat",
+    "parent": "0"
+  },
+  {
+    "id": "5",
+    "name": "Haji",
+    "parent": "0"
+  },
+  {
+    "id": "6",
+    "name": "Nikah",
+    "parent": "0"
+  }
+]
