@@ -15,26 +15,26 @@
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label">Tempat Lahir :</label>
-            <input type="text" class="form-control" name="tempat_lahir" value="<?=$tblKUsers->tempat_lahir?>">
+            <input type="text" class="form-control" name="tempat_lahir" value="<?=$tblKProfil->tempat_lahir?>">
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label">Tanggal Lahir :</label>
-            <input type="date" class="form-control" name="tgl_lahir" value="<?=$tblKUsers->tgl_lahir?>">
+            <input type="date" class="form-control" name="tgl_lahir" value="<?=$tblKProfil->tgl_lahir?>">
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label">Alamat :</label>
-            <textarea class="form-control" style="height: 200px" name="alamat"><?=$tblKUsers->alamat?></textarea>
+            <textarea class="form-control" style="height: 200px" name="alamat"><?=$tblKProfil->alamat?></textarea>
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label">Jenis Kelamin :</label>
             <select name="jenis_kelamin" class="form-control" required="">
-                <option value="L" <?=($tblKUsers->jenis_kelamin == 'L')?'selected':'' ?>>Laki-Laki</option>
-                <option value="P" <?=($tblKUsers->jenis_kelamin == 'P')?'selected':'' ?>>Perempuan</option>
+                <option value="L" <?=($tblKProfil->jenis_kelamin == 'L')?'selected':'' ?>>Laki-Laki</option>
+                <option value="P" <?=($tblKProfil->jenis_kelamin == 'P')?'selected':'' ?>>Perempuan</option>
             </select>
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label">No. Telp :</label>
-            <input type="text" class="form-control" name="no_telp" value="<?=$tblKUsers->no_telp?>">
+            <input type="text" class="form-control" name="no_telp" value="<?=$tblKProfil->no_telp?>">
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label">Username :</label>

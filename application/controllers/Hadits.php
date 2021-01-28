@@ -92,6 +92,36 @@ class Hadits extends CI_Controller {
     $this->load->view('index', $data);
   }
 
+  function Detail($id){
+		$rules = array(
+			'select'    => null,
+			'where'     => array(
+				'id_master_hadits' => $id
+			),
+			'or_where'  => null,
+			'order'     => null,
+			'limit'     => null,
+			'pagging'   => null,
+		);
+		$rules2 = array(
+      'select'    => null,
+      'order'     => null,
+      'limit'     => null,
+      'pagging'   => null,
+    );
+		$data = array(
+      'title'         => 'Detail Hadits | Knowledge Management System',
+			'content'       => 'Hadits/detail/content',
+      'css'           => 'Hadits/detail/css',
+      'javascript'    => 'Hadits/detail/javascript',
+			'modal'         => 'Hadits/detail/modal',
+			'tblMHadits'	=> $this->View_master_hadits->where($rules)->row(),
+			'tblMKitab'	=> $this->Tbl_master_kitab->read($rules2)->result(),
+			'tblMBab'	=> $this->Tbl_master_bab->read($rules2)->result()
+		);
+		$this->load->view('index',$data);
+	}
+
   public function filter($num = ''){
     $perpage = 12;
     $offset = $this->uri->segment(3);
