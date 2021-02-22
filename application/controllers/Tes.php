@@ -13,6 +13,7 @@ class Tes extends CI_Controller {
       $this->load->model('Histori/Tbl_histori_test');
       $this->load->model('Histori/Tbl_histori_jawaban');
       $this->load->model('Histori/Tbl_histori_rekomendasi');
+      $this->load->model('Knowledge/Tbl_knowledge_profil');
       $this->load->model('Master/Tbl_master_pilihan');
       $this->load->model('Views/Master/View_master_pertanyaan');
       $this->load->model('Views/Histori/View_histori_jawaban');
@@ -30,13 +31,25 @@ class Tes extends CI_Controller {
       'limit'     => null,
       'pagging'   => null,
     );
+    $rules2 = array(
+      'select'    => null,
+      'where'     => array(
+        'created_by' => $this->session->userdata('id_users')
+      ),
+      'or_where'  => null,
+      'order'     => 'level DESC',
+      'limit'     => null,
+      'pagging'   => null,
+    );
+    $last_test_id = $this->Tbl_histori_test->where($rules2)->row();
     $data = array(
       'title'         => 'Tes | Knowledge Management System',
       'content'       => 'Tes/read/content',
       'css'           => 'Tes/read/css',
       'javascript'    => 'Tes/read/javascript',
       'modal'         => 'Tes/read/modal',
-      'tblHTest'      => $this->Tbl_histori_test->where($rules)->result()
+      'tblHTest'      => $this->Tbl_histori_test->where($rules)->result(),
+      'last_test_id'   => (!empty($last_test_id)) ? $last_test_id : '-',
     );
     $this->load->view('index', $data);
   }
@@ -114,6 +127,7 @@ class Tes extends CI_Controller {
       'select'    => null,
       'where'     => array(
         'level' => $this->session->userdata('level'),
+        'isDeleted' => '0'
       ),
       'or_where'  => null,
       'order'     => null,
@@ -137,7 +151,8 @@ class Tes extends CI_Controller {
     $rules = array(
       'select'    => null,
       'where'     => array(
-        'level' => $this->session->userdata('level')
+        'level' => $this->session->userdata('level'),
+        'isDeleted' => '0'
       ),
       'or_where'  => null,
       'order'     => null,
@@ -260,6 +275,7 @@ class Tes extends CI_Controller {
       'select'    => null,
       'where'     => array(
         'level' => $this->session->userdata('level'),
+        'isDeleted' => '0'
       ),
       'or_where'  => null,
       'order'     => null,
@@ -288,7 +304,8 @@ class Tes extends CI_Controller {
 
     $command = escapeshellcmd("py ".FCPATH."file\py\submit_tes.py ".$this->session->userdata('id_users')." ".$this->session->userdata('level')." ".$tblHTest->id_histori_tes);
     $output = shell_exec($command);
-    //echo $output;
+    // echo $command;
+    // exit();
     if($output == true){
       $rules = array(
         'where' => array(
@@ -341,5 +358,32 @@ class Tes extends CI_Controller {
       'tblHRekomendasi'      => $this->View_histori_rekomendasi->where($rules2)->result()
     );
     $this->load->view('index', $data);
+  }
+
+  function NextLevel(){
+    $rules = array(
+      'select'    => null,
+      'where'     => array(
+        'id_users' => $this->session->userdata('id_users')
+      ),
+      'or_where'  => null,
+      'order'     => null,
+      'limit'     => null,
+      'pagging'   => null,
+    );
+    $tblKProfil = $this->Tbl_knowledge_profil->where($rules)->row();
+    $rules = array(
+      'where' => array(
+          'id_users' => $this->session->userdata('id_users'),
+      ),
+      'data'  => array(
+        'level' 	=> $tblKProfil->level+1
+      ),
+    );
+    $this->Tbl_knowledge_profil->update($rules);
+    $this->session->set_userdata('level', $rules['data']['level']);
+    $this->session->set_flashdata('message','Berhasil melanjutkan tes. Silahkan pelajari bab yang telah disediakan.');
+    $this->session->set_flashdata('type_message','success');
+    redirect('Hadits/');
   }
 }

@@ -16,14 +16,17 @@
             <li class="nav-item">
                 <a href="<?=base_url('Dashboard')?>" class="nav-link">Dashboard</a>
             </li>
-            <li class="nav-item">
-                <a href="<?=base_url('Hadits')?>" class="nav-link">Hadits</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    Internalisasi <i class="right fas fa-angle-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="<?=base_url('Hadits')?>" class="nav-link">Belajar</a>
+                    <a href="<?=base_url('Tes')?>" class="nav-link">Evaluasi</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a href="<?=base_url('Profil')?>" class="nav-link">Profil</a>
-            </li>
-            <li class="nav-item">
-                <a href="<?=base_url('Tes')?>" class="nav-link">Tes</a>
             </li>
         </ul>
     </div>

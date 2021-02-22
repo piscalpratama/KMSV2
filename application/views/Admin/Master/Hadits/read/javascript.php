@@ -39,3 +39,22 @@
       });
   });
 </script>
+<script>
+  $(document).ready(function(){
+      var dataTable = $('#dataTable3').DataTable({
+          "processing":true,
+          "serverSide":true,
+          "order":[],
+          "ajax":{
+              url:"<?=base_url('Admin/Master/Hadits/Json4')?>",
+              type:"POST"
+          },
+          "columnDefs":[
+              {
+                  "targets":[0, 7, 7],  // sesuaikan order table dengan jumlah column
+                  "orderable":true,
+              },
+          ],
+      });
+  });
+</script>

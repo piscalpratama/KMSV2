@@ -14,6 +14,8 @@ class Hadits extends CI_Controller {
       $this->load->model('Knowledge/Tbl_knowledge_profil');
       $this->load->model('Master/Tbl_master_bab');
       $this->load->model('Master/Tbl_master_kitab');
+      $this->load->model('Histori/Tbl_histori_belajar');
+      $this->load->model('Views/Knowledge/View_knowledge_expert');
       $this->load->model('Views/Master/View_master_hadits');
       $this->load->model('Settings/Tbl_setting');
   }
@@ -36,7 +38,9 @@ class Hadits extends CI_Controller {
       'pagging'   => null,
     );
     $viewMHadits = $this->View_master_hadits->where($rules)->result();
-    
+    // foreach()
+    // var_dump($viewMHadits);
+    // exit();
     $rules = array(
       'select'    => null,
       'where'     => array(
@@ -76,7 +80,17 @@ class Hadits extends CI_Controller {
       'limit'     => null,
       'pagging'   => null,
     );
-    $tblMBab = $this->Tbl_master_bab->read($rules)->result();
+    $rules2 = array(
+      'select'    => null,
+      'where'     => array(
+        'level' => $this->session->userdata('level')
+      ),
+      'or_where'  => null,
+      'order'     => null,
+      'limit'     => null,
+      'pagging'   => null,
+    );
+    $tblMBab = $this->Tbl_master_bab->where($rules2)->result();
     $tblMKitab = $this->Tbl_master_kitab->read($rules)->result();
 
     $data = array(
@@ -109,6 +123,41 @@ class Hadits extends CI_Controller {
       'limit'     => null,
       'pagging'   => null,
     );
+    $rules3 = array(
+			'select'    => null,
+			'where'     => array(
+				'id_master_hadits' => $id,
+				'created_by' => $this->session->userdata('id_users'),
+			),
+			'or_where'  => null,
+			'order'     => null,
+			'limit'     => null,
+			'pagging'   => null,
+    );
+    $tblHBelajar = $this->Tbl_histori_belajar->where($rules3);
+    if($tblHBelajar->num_rows() > 0){
+      $tblHBelajar = $tblHBelajar->row();
+      $rules4 = array(
+        'where' => array(
+          'id_master_hadits' => $id,
+          'created_by' => $this->session->userdata('id_users'),
+        ),
+        'data' => array(
+          'count' => $tblHBelajar->count+1,
+          'id_master_hadits' => $id,
+          'updated_by' => $this->session->userdata('id_users')
+        )
+      );
+      $this->Tbl_histori_belajar->update($rules4);
+    }else{
+      $data = array(
+        'count' => 1,
+        'id_master_hadits' => $id,
+        'created_by' => $this->session->userdata('id_users'),
+        'updated_by' => $this->session->userdata('id_users')
+      );
+      $this->Tbl_histori_belajar->create($data);
+    }
 		$data = array(
       'title'         => 'Detail Hadits | Knowledge Management System',
 			'content'       => 'Hadits/detail/content',
@@ -117,7 +166,8 @@ class Hadits extends CI_Controller {
 			'modal'         => 'Hadits/detail/modal',
 			'tblMHadits'	=> $this->View_master_hadits->where($rules)->row(),
 			'tblMKitab'	=> $this->Tbl_master_kitab->read($rules2)->result(),
-			'tblMBab'	=> $this->Tbl_master_bab->read($rules2)->result()
+			'tblMBab'	=> $this->Tbl_master_bab->read($rules2)->result(),
+			'tblKExpert'	=> $this->View_knowledge_expert->where($rules)->result(),
 		);
 		$this->load->view('index',$data);
 	}

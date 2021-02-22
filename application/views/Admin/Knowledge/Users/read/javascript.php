@@ -6,7 +6,6 @@
       var dataTable = $('#dataTable').DataTable({
           "processing":true,
           "serverSide":true,
-          "order":[],
           "ajax":{
               url:"<?=base_url('Admin/Knowledge/Users/Json')?>",
               type:"POST"

@@ -26,7 +26,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Knowledge</h5>
                             <div class="float-right">
-                              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_hadits"><i class="fas fa-search"></i> Fixed Data</button>
+                              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_hadits"><i class="fas fa-plus"></i> Expert</button>
                               <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#search_summarizing"><i class="fas fa-search"></i> Summarizing</button>
                             </div>
                             <p class="card-text">

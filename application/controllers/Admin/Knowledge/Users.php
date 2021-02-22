@@ -16,6 +16,7 @@ class Users extends CI_Controller {
 		$this->load->model('Histori/Tbl_histori_test');
 		$this->load->model('Settings/Tbl_setting');
 		$this->load->model('Views/Histori/View_histori_rekomendasi');
+		$this->load->model('Views/Histori/View_histori_belajar');
 		$this->load->model('Views/Knowledge/View_knowledge_users');
         $this->load->model('ServerSide/SS_knowledge_users');
     }
@@ -48,6 +49,17 @@ class Users extends CI_Controller {
 		'order'     => null,
 		'limit'     => null,
 		'pagging'   => null,
+		);
+		
+		$rules_hb = array(
+			'select'    => null,
+			'where'     => array(
+			  'created_by' => $id
+			),
+			'or_where'  => null,
+			'order'     => null,
+			'limit'     => null,
+			'pagging'   => null,
 		);
 		$rules2 = array(
 		'select'    => null,
@@ -177,6 +189,7 @@ class Users extends CI_Controller {
 			'modal'         => 'Admin/Knowledge/Users/detail/modal',
 			'tblKUsers'     => $this->Tbl_knowledge_users->where($rules)->row(),
 			'tblKProfil'     => $this->Tbl_knowledge_profil->where($rules)->row(),
+			'tblHBelajar'     => $this->View_histori_belajar->where($rules_hb)->result(),
 			'rekomendasi_tidakpaham' => ($tes_num == true) ? $rekomendasi_tidakpaham : null,
 			'rekomendasi_kurangpaham' => ($tes_num == true) ? $rekomendasi_kurangpaham : null,
 			'rekomendasi_paham' => ($tes_num == true) ? $rekomendasi_paham : null,
@@ -276,6 +289,7 @@ class Users extends CI_Controller {
 		$data = array();
 		$no = 1;
 		foreach($fetch_data as $row){
+			$sub_array = array();
 			$sub_array[] = "
 			  <a class=\"btn btn-primary btn-xs\" href=\"".base_url('Admin/Knowledge/Users/Detail/'.$row->id_users)."\" target=\"_blank\"><i class=\"fas fa-paste\"></i></a>
 			";

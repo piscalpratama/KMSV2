@@ -27,6 +27,14 @@ def _sum(arr,n):
 
 rekomendasi = []
 for a in tblMBab:
+    cursor = db.cursor()
+    query5 = "SELECT COUNT(*) FROM view_master_pilihan where id_master_bab="+str(a[0])
+    cursor.execute(query5)
+    tblMPilihan = cursor.fetchone()
+
+    if tblMPilihan[0] == 0:
+        continue
+
     total_nilai = 0
     absolute_error = []
 
@@ -65,6 +73,7 @@ for a in tblMBab:
 
     n = len(absolute_error)
     total_nilai_ae = _sum(absolute_error, n)
+    print(a[0])
     mae = total_nilai_ae/n
 
     data = {

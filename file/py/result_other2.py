@@ -30,12 +30,26 @@ stagging = preprocessing.stagging_text(new_sentence)
 stop_plus = preprocessing.stopword_plus(new_sentence)
 kalimat = ' '.join(stop_plus)
 
-stemer = preprocessing.steman(new_sentence)
+# Skenario 1
+n = 10;
+if len(stagging) < 10:
+    n = 5
 
+if len(stagging) == 10:
+    n = len(stagging) - 2
+
+if len(stagging) > 30:
+    n = 15
+
+if len(stagging) < 5:
+    n = len(stagging) - 1
+
+if len(stagging) == 1:
+    n = len(stagging)
 
 textrank = TextRankSentences()
 text = textrank.analyze(str(new_sentence))
-text = textrank.get_top_sentences(5)
+text = textrank.get_top_sentences(n)
 
 
 # View Similarity Matriks

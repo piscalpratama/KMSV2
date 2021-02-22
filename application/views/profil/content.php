@@ -33,6 +33,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Histori Belajar:</h5>
+                            <p class="card-text">
+                                <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Hadits</th>
+                                                <th>Jumlah Baca</th>
+                                                <th>Tanggal Baca Terakhir</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no=1; foreach($tblHBelajar as $a): ?>
+                                                <tr>
+                                                    <td><?=$no++?></td>
+                                                    <td><?=$a->hadits_name?></td>
+                                                    <td><?=$a->count?></td>
+                                                    <td><?=$a->updated_date?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-4">
                     <div class="card card-widget widget-user-2">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -84,7 +115,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                <div class="card">
+                    <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Statistik Tes Terakhir:</h5>
                             <p class="card-text">
@@ -98,34 +129,38 @@
                         <div class="card-body">
                             <h5 class="card-title">Saran Belajar:</h5>
                             <p class="card-text">
-                                <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
-                                    anda tidak mengalami kendala belajar<br>
-                                    Silahkan lakukan tes atau lanjutkan ke level tes selanjutnya.<br>
+                                <?php if($tes_num == false): ?>
+                                    Anda belum melajakukan Tes evaluasi.
                                 <?php else: ?>
-                                    anda mengalami kendala belajar pada bab
-                                    <?php foreach($rekomendasi_tidakpaham as $a){ echo $a['bab_name'].','; }?>
-                                    <?php foreach($rekomendasi_kurangpaham as $a){ echo $a['bab_name'].','; }?>.
-                                    Sedangkan pada bab 
-                                    <?php foreach($rekomendasi_paham as $a){ echo $a['bab_name'].','; }?>
-                                    <?php foreach($rekomendasi_sangatpaham as $a){ echo $a['bab_name'].','; }?>.
-                                    peserta belajar sudah dianggap paham.
                                     <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
+                                        anda tidak mengalami kendala belajar<br>
+                                        Silahkan lakukan tes atau lanjutkan ke level tes selanjutnya.<br>
                                     <?php else: ?>
-                                        Maka anda dapat memprioritaskan bab 
+                                        anda mengalami kendala belajar pada bab
                                         <?php foreach($rekomendasi_tidakpaham as $a){ echo $a['bab_name'].','; }?>
-                                        <?php foreach($rekomendasi_kurangpaham as $a){ echo $a['bab_name'].','; }?>
-                                        untuk dipelajari kembali.<br><br>
-                                    <?php endif; ?>
-                                    <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
-                                        Anda belum memahami bab yang telah disediakan, silahkan pelajari dan lakukan tes ulang untuk dapat melanjutkan ke bab selanjutnya.
-                                    <?php else: ?>
-                                        Anda dapat melanjutkan ke materi selanjutnya :<br>
-                                        <?php foreach($rekomendasi_selanjutnya1 as $a): ?>
-                                            <li><?=$a?></li>
-                                        <?php endforeach ?>
-                                        <?php foreach($rekomendasi_selanjutnya2 as $a): ?>
-                                            <li><?=$a?></li>
-                                        <?php endforeach ?>
+                                        <?php foreach($rekomendasi_kurangpaham as $a){ echo $a['bab_name'].','; }?>.
+                                        Sedangkan pada bab 
+                                        <?php foreach($rekomendasi_paham as $a){ echo $a['bab_name'].','; }?>
+                                        <?php foreach($rekomendasi_sangatpaham as $a){ echo $a['bab_name'].','; }?>.
+                                        peserta belajar sudah dianggap paham.
+                                        <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
+                                        <?php else: ?>
+                                            Maka anda dapat memprioritaskan bab 
+                                            <?php foreach($rekomendasi_tidakpaham as $a){ echo $a['bab_name'].','; }?>
+                                            <?php foreach($rekomendasi_kurangpaham as $a){ echo $a['bab_name'].','; }?>
+                                            untuk dipelajari kembali.<br><br>
+                                        <?php endif; ?>
+                                        <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
+                                            Anda belum memahami bab yang telah disediakan, silahkan pelajari dan lakukan tes ulang untuk dapat melanjutkan ke bab selanjutnya.
+                                        <?php else: ?>
+                                            Anda dapat melanjutkan ke materi selanjutnya :<br>
+                                            <?php foreach($rekomendasi_selanjutnya1 as $a): ?>
+                                                <li><?=$a?></li>
+                                            <?php endforeach ?>
+                                            <?php foreach($rekomendasi_selanjutnya2 as $a): ?>
+                                                <li><?=$a?></li>
+                                            <?php endforeach ?>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </p>

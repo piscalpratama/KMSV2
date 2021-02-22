@@ -140,7 +140,7 @@ class TextRankSentences():
             index = 0
 
             for epoch in range(number):
-                #print (str(sorted_pr[index]) + " : " + str(self.pr_vector[sorted_pr[index]]))
+                print (str(sorted_pr[index]) + " : " + str(self.pr_vector[sorted_pr[index]]))
                 sent = self.sentences[sorted_pr[index]]
                 sent = normalize_whitespace(sent)
                 top_sentences[sent] = self.pr_vector[sorted_pr[index]]

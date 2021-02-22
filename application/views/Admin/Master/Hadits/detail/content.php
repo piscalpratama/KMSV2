@@ -57,13 +57,61 @@
                                     <th>Keterangan</th>
                                     <td>
                                         <?php if($tblMHadits->keterangan == 'fixed'): ?>
-                                            <div class="badge badge-primary">fixed</div>
+                                            <div class="badge badge-primary">Kitab 9 Imam</div>
                                         <?php elseif($tblMHadits->keterangan == 'summarizing'): ?>
-                                            <div class="badge badge-warning">summarizing</div>
+                                            <div class="badge badge-warning">Summarizing</div>
+                                        <?php elseif($tblMHadits->keterangan == 'expert'): ?>
+                                            <div class="badge badge-success">Expert</div>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
                             </table>
+                        </div>
+                    </div>
+                </div>
+                <?php if($tblKExpert != null): ?>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Pendapat Ahli
+                            </div>
+                            <div class="card-body">
+                                <?php foreach($tblKExpert as $a): ?>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?=$a->nama_users?>
+                                            <div class="float-right">
+                                                <?=$a->updated_date?>
+                                                <?php if($a->updated_by == $this->session->userdata('id_setting_users')): ?>
+                                                    <a class="btn btn-warning btn-xs" href="#" data-toggle="modal" data-target="#update-pendapat<?=$a->id_knowledge_expert?>"><i class="fas fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-xs" href="<?=base_url('Admin/Knowledge/Expert/Delete/'.$tblMHadits->id_master_hadits.'/'.$a->id_knowledge_expert)?>" onclick="return confirm('Apakah anda yakin ?')"><i class="fas fa-trash"></i></a>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><?=$a->knowledge?></p>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Tambah Pendapat
+                        </div>
+                        <div class="card-body">
+                            <?=form_open('Admin/Knowledge/Expert/Create/'.$tblMHadits->id_master_hadits)?>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Pendapat :</label>
+                                <textarea class="form-control" style="height: 150px" name="pendapat"></textarea>
+                            </div>
+                            <div class="form-group float-right">
+                                <button type="submit" class="btn btn-primary">Tambah</button>
+                            </div>
+                            <?=form_close()?>
                         </div>
                     </div>
                 </div>

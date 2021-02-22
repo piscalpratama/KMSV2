@@ -33,6 +33,38 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Histori Belajar:</h5>
+                            <p class="card-text">
+                                <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Hadits</th>
+                                                <th>Jumlah Baca</th>
+                                                <th>Tanggal Baca Terakhir</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no=1; foreach($tblHBelajar as $a): ?>
+                                                <tr>
+                                                    <td><?=$no++?></td>
+                                                    <td><?=$a->hadits_name?></td>
+                                                    <td><?=$a->count?></td>
+                                                    <td><?=$a->updated_date?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-4">
                     <div class="card card-widget widget-user-2">
                         <!-- Add the bg color to the header using any of the bg-* classes -->

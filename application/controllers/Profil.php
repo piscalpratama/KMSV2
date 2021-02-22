@@ -15,8 +15,10 @@ class Profil extends CI_Controller {
       $this->load->model('Master/Tbl_master_bab');
       $this->load->model('Histori/Tbl_histori_rekomendasi');
       $this->load->model('Histori/Tbl_histori_test');
+      $this->load->model('Histori/Tbl_histori_belajar');
       $this->load->model('Settings/Tbl_setting');
       $this->load->model('Views/Histori/View_histori_rekomendasi');
+      $this->load->model('Views/Histori/View_histori_belajar');
   }
 
 	public function index() {
@@ -25,6 +27,16 @@ class Profil extends CI_Controller {
       'select'    => null,
       'where'     => array(
         'id_users' => $this->session->userdata('id_users')
+      ),
+      'or_where'  => null,
+      'order'     => null,
+      'limit'     => null,
+      'pagging'   => null,
+    );
+    $rules_hb = array(
+      'select'    => null,
+      'where'     => array(
+        'created_by' => $this->session->userdata('id_users')
       ),
       'or_where'  => null,
       'order'     => null,
@@ -42,6 +54,12 @@ class Profil extends CI_Controller {
       'pagging'   => null,
     );
     $tblHTest = $this->Tbl_histori_test->where($rules2);
+    
+    $rekomendasi_tidakpaham = array();
+    $rekomendasi_kurangpaham = array();
+    $rekomendasi_paham = array();
+    $rekomendasi_sangatpaham = array();
+
     if($tblHTest->num_rows() > 0){
       $tes_num = true;
       $tblHTest = $tblHTest->row();
@@ -68,10 +86,6 @@ class Profil extends CI_Controller {
         'pagging'   => null,
       );
       $tblHRekomendasi_pie = $this->View_histori_rekomendasi->where($rules_pie)->result();
-      $rekomendasi_tidakpaham = array();
-      $rekomendasi_kurangpaham = array();
-      $rekomendasi_paham = array();
-      $rekomendasi_sangatpaham = array();
       
       foreach($tblHRekomendasi as $a):
         if($a->score < 25):
@@ -159,6 +173,7 @@ class Profil extends CI_Controller {
         'modal'         => 'profil/modal',
         'tblKUsers'     => $this->Tbl_knowledge_users->where($rules)->row(),
         'tblKProfil'     => $this->Tbl_knowledge_profil->where($rules)->row(),
+        'tblHBelajar'     => $this->View_histori_belajar->where($rules_hb)->result(),
         'rekomendasi_tidakpaham' => ($tes_num == true) ? $rekomendasi_tidakpaham : null,
         'rekomendasi_kurangpaham' => ($tes_num == true) ? $rekomendasi_kurangpaham : null,
         'rekomendasi_paham' => ($tes_num == true) ? $rekomendasi_paham : null,

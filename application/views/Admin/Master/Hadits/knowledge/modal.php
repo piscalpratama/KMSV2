@@ -136,13 +136,6 @@
             <label for="recipient-name" class="control-label">Arab :</label>
             <textarea class="form-control" style="height: 400px" name="hadits_arab"></textarea>
         </div>
-        <div class="form-group">
-            <label for="recipient-name" class="control-label">Keterangan :</label>
-            <select name="keterangan" class="form-control" required="">
-                <option value="fixed">Fixed</option>
-                <option value="summarizing">Summarizing</option>
-            </select>
-        </div>
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>

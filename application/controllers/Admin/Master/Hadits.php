@@ -12,10 +12,13 @@ class Hadits extends CI_Controller {
         $this->load->model('Master/Tbl_master_hadits');
         $this->load->model('Master/Tbl_master_bab');
         $this->load->model('Master/Tbl_master_kitab');
+        $this->load->model('Knowledge/Tbl_knowledge_expert');
         $this->load->model('Views/Master/View_master_hadits');
+        $this->load->model('Views/Knowledge/View_knowledge_expert');
         $this->load->model('ServerSide/SS_master_hadits');
         $this->load->model('ServerSide/SS_master_hadits_fixed');
         $this->load->model('ServerSide/SS_master_hadits_summarizing');
+        $this->load->model('ServerSide/SS_master_hadits_expert');
     }
 
 	function index(){
@@ -48,13 +51,19 @@ class Hadits extends CI_Controller {
             'css'           => 'Admin/Master/hadits/kombinasi/css',
             'javascript'    => 'Admin/Master/hadits/kombinasi/javascript',
             'modal'         => 'Admin/Master/hadits/kombinasi/modal',
-			'tblMBab'	=> $this->Tbl_master_bab->read($rules)->result()
+			'tblMBab'		=> $this->Tbl_master_bab->read($rules)->result()
 		);
 		$this->load->view('Admin/index',$data);
 	}
 
 	function DetailKombinasi($id){
-		$rules = array(
+		$rules2 = array(
+            'select'    => null,
+            'order'     => null,
+            'limit'     => null,
+            'pagging'   => null,
+		);
+		$rules3 = array(
 			'select'    => null,
 			'where'     => array(
 				'id_master_bab' => $id
@@ -64,20 +73,35 @@ class Hadits extends CI_Controller {
 			'limit'     => null,
 			'pagging'   => null,
 		);
-		$rules2 = array(
-            'select'    => null,
-            'order'     => null,
-            'limit'     => null,
-            'pagging'   => null,
-        );
+		if(empty($this->input->post('id_master_kitab'))){
+            $data_kosong = TRUE;
+        }else{
+			$data_kosong = FALSE;
+			$rules = array(
+				'select'    => null,
+				'where'     => array(
+					'id_master_bab' => $id,
+					'id_master_kitab' => $this->input->post('id_master_kitab')
+				),
+				'or_where'  => null,
+				'order'     => null,
+				'limit'     => null,
+				'pagging'   => null,
+			);
+			$tblMHadits = $this->View_master_hadits->where($rules)->result();
+		}
+		
 		$data = array(
             'title'         => 'List Hadits Kombinasi | Admin KMS',
 			'content'       => 'Admin/Master/hadits/detail_kombinasi/content',
             'css'           => 'Admin/Master/hadits/detail_kombinasi/css',
             'javascript'    => 'Admin/Master/hadits/detail_kombinasi/javascript',
 			'modal'         => 'Admin/Master/hadits/detail_kombinasi/modal',
-			'tblMHadits'	=> $this->View_master_hadits->where($rules)->result(),
-			'bab_name'	=> $this->View_master_hadits->where($rules)->row(),
+			'tblMHadits'	=> ($data_kosong == FALSE ? (!empty($tblMHadits)) ? $tblMHadits : NULL : NULL),
+			'tblMKitab'	=> $this->Tbl_master_kitab->read($rules2)->result(),
+			'bab_name'	=> $this->View_master_hadits->where($rules3)->row(),
+			'id_master_kitab'	=> ($data_kosong == FALSE ? $this->input->post('id_master_kitab') : NULL),
+			'data_kosong'	=> $data_kosong
 		);
 		$this->load->view('Admin/index',$data);
 	}
@@ -107,7 +131,8 @@ class Hadits extends CI_Controller {
 			'modal'         => 'Admin/Master/hadits/detail/modal',
 			'tblMHadits'	=> $this->View_master_hadits->where($rules)->row(),
 			'tblMKitab'	=> $this->Tbl_master_kitab->read($rules2)->result(),
-			'tblMBab'	=> $this->Tbl_master_bab->read($rules2)->result()
+			'tblMBab'	=> $this->Tbl_master_bab->read($rules2)->result(),
+			'tblKExpert'	=> $this->View_knowledge_expert->where($rules)->result(),
 		);
 		$this->load->view('Admin/index',$data);
 	}
@@ -118,7 +143,6 @@ class Hadits extends CI_Controller {
 	    $rules[] = array('field' => 'hadits_arab', 'label' => 'Hadits (Arab)', 'rules' => 'required');
 	    $rules[] = array('field' => 'id_master_bab', 'label' => 'Bab', 'rules' => 'required');
 	    $rules[] = array('field' => 'id_master_kitab', 'label' => 'Kitab', 'rules' => 'required');
-	    $rules[] = array('field' => 'keterangan', 'label' => 'Keterangan', 'rules' => 'required');
 		$this->form_validation->set_rules($rules);
 		if ($this->form_validation->run() == FALSE){
 			$this->session->set_flashdata('message',validation_errors());
@@ -132,7 +156,7 @@ class Hadits extends CI_Controller {
 				'id_master_bab' 	=> $this->input->post('id_master_bab'),
 				'id_master_jenis' 	=> $this->input->post('id_master_jenis'),
 				'id_master_kitab' 	=> $this->input->post('id_master_kitab'),
-				'keterangan' 	=> $this->input->post('keterangan'),
+				'keterangan' 	=> 'expert',
                 'created_by'     => $this->session->userdata('id_setting_users'),
                 'updated_by'     => $this->session->userdata('id_setting_users'),
 			);
@@ -209,12 +233,14 @@ class Hadits extends CI_Controller {
 		foreach($fetch_data as $row){
 			$sub_array = array();
 			if($row->keterangan == 'fixed'):
-			  $keterangan = '<div class="badge badge-primary">Fixed</div>';
+				$keterangan = '<div class="badge badge-primary">Kitab 9 Imam</div>';
 			elseif($row->keterangan == 'summarizing'):
-			  $keterangan = '<div class="badge badge-warning">Summarizing</div>';
+				$keterangan = '<div class="badge badge-warning">Summarizing</div>';
+			elseif($row->keterangan == 'expert'):
+				$keterangan = '<div class="badge badge-success">Expert</div>';
 			endif;
 			$sub_array[] = "
-			  <a class=\"btn btn-primary btn-xs\" href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\"><i class=\"fas fa-paste\"></i></a>
+			  	<a class=\"btn btn-primary btn-xs\" href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\"><i class=\"fas fa-paste\"></i></a>
 			";
 			$sub_array[] = $no++;
 			$sub_array[] = $row->hadits_name;
@@ -293,9 +319,11 @@ class Hadits extends CI_Controller {
 		foreach($fetch_data as $row){
 			$sub_array = array();
 			if($row->keterangan == 'fixed'):
-			  $keterangan = '<div class="badge badge-primary">Fixed</div>';
+				$keterangan = '<div class="badge badge-primary">Kitab 9 Imam</div>';
 			elseif($row->keterangan == 'summarizing'):
-			  $keterangan = '<div class="badge badge-warning">Summarizing</div>';
+				$keterangan = '<div class="badge badge-warning">Summarizing</div>';
+			elseif($row->keterangan == 'expert'):
+				$keterangan = '<div class="badge badge-success">Expert</div>';
 			endif;
 			$sub_array[] = "
 			  <a class=\"btn btn-primary btn-xs\" href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\"><i class=\"fas fa-paste\"></i></a>
@@ -325,9 +353,45 @@ class Hadits extends CI_Controller {
 		foreach($fetch_data as $row){
 			$sub_array = array();
 			if($row->keterangan == 'fixed'):
-			  $keterangan = '<div class="badge badge-primary">Fixed</div>';
+				$keterangan = '<div class="badge badge-primary">Kitab 9 Imam</div>';
 			elseif($row->keterangan == 'summarizing'):
-			  $keterangan = '<div class="badge badge-warning">Summarizing</div>';
+				$keterangan = '<div class="badge badge-warning">Summarizing</div>';
+			elseif($row->keterangan == 'expert'):
+				$keterangan = '<div class="badge badge-success">Expert</div>';
+			endif;
+			$sub_array[] = "
+			  <a class=\"btn btn-primary btn-xs\" href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\"><i class=\"fas fa-paste\"></i></a>
+			";
+			$sub_array[] = $no++;
+			$sub_array[] = $row->hadits_name;
+			$sub_array[] = substr($row->hadits_content, 0, 100)."...<a href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\">Detail</a>";
+			$sub_array[] = substr($row->hadits_arab, 0, 100)."...<a href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\">Detail</a>";
+			$sub_array[] = $row->bab_name;
+			$sub_array[] = $row->kitab_name;
+			$sub_array[] = $keterangan;
+			$data[] = $sub_array;
+		}
+		$output = array(
+			"draw"				=>	intval($_POST["draw"]),
+			"recordsTotal"		=>	$this->SS_master_hadits_summarizing->get_all_data(),
+			"recordsFiltered"	=>	$this->SS_master_hadits_summarizing->get_filtered_data(),
+			"data"				=>	$data
+		);
+		echo json_encode($output);
+	}
+
+	function Json4(){
+		$fetch_data = $this->SS_master_hadits_expert->make_datatables();
+		$data = array();
+		$no = 1;
+		foreach($fetch_data as $row){
+			$sub_array = array();
+			if($row->keterangan == 'fixed'):
+			  $keterangan = '<div class="badge badge-primary">Kitab 9 Imam</div>';
+			elseif($row->keterangan == 'summarizing'):
+				$keterangan = '<div class="badge badge-warning">Summarizing</div>';
+			elseif($row->keterangan == 'expert'):
+				$keterangan = '<div class="badge badge-success">Expert</div>';
 			endif;
 			$sub_array[] = "
 			  <a class=\"btn btn-primary btn-xs\" href=\"".base_url('Admin/Master/Hadits/Detail/'.$row->id_master_hadits)."\" target=\"_blank\"><i class=\"fas fa-paste\"></i></a>

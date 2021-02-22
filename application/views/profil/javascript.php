@@ -1,4 +1,13 @@
 <script src="https://d3js.org/d3.v4.js"></script>
+<!-- DataTables -->
+<script src="<?=base_url()?>assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?=base_url()?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable();
+  });
+</script>
+
 <script>
     // set the dimensions and margins of the graph
     var width = 1200

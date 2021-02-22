@@ -55,3 +55,32 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
+
+<?php foreach($tblKExpert as $a): ?>
+  <div class="modal fade" id="update-pendapat<?=$a->id_knowledge_expert?>">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Pendapat</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <?=form_open('Admin/Knowledge/Expert/Update/'.$tblMHadits->id_master_hadits.'/'.$a->id_knowledge_expert)?>
+        <div class="modal-body">
+          <div class="form-group">
+              <label for="recipient-name" class="control-label">Pendapat :</label>
+              <textarea class="form-control" style="height: 150px" name="pendapat"><?=$a->knowledge?></textarea>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary btn-sm">Update</button>
+        </div>
+        <?=form_close()?>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+<?php endforeach; ?>

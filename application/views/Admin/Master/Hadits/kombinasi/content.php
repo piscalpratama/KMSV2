@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Hadits (Kombinasi)</h1>
+                    <h1 class="m-0 text-dark">Kombinasi</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,9 +26,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Data Bab</h5>
-                            <div class="float-right">
-                              <a class="btn btn-primary btn-sm" href="<?=base_url('Admin/Master/Hadits/Knowledge')?>" target="_blank"><i class="fas fa-plus"></i> Add Knowledge</a>
-                            </div>
                             <p class="card-text">
                               <div class="table-responsive">
                                 <table id="example1" class="table table-bordered table-striped">

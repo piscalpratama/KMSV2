@@ -41,11 +41,25 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
+          <a href="<?=base_url()?>Admin/Master/Hadits/Knowledge" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Tambah Knowledge
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
           <a href="<?=base_url()?>Admin/Master/Hadits/Kombinasi" class="nav-link">
             <i class="nav-icon fas fa-folder"></i>
             <p>
-              Hadits (Kombinasi)
+              Kombinasi
             </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?=base_url('Admin/Master/Hadits')?>" class="nav-link">
+            <i class="fas fa-folder nav-icon"></i>
+            <p>Externalisasi</p>
           </a>
         </li>
         <li class="nav-item has-treeview">
@@ -84,7 +98,7 @@
             <li class="nav-item">
               <a href="<?=base_url('Admin/Master/Hadits')?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Hadits (Externalisasi)</p>
+                <p>Hadits</p>
               </a>
             </li>
           </ul>

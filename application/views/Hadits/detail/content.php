@@ -63,6 +63,34 @@
                         </div>
                     </div>
                 </div>
+                <?php if($tblKExpert != null): ?>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Pendapat Ahli
+                            </div>
+                            <div class="card-body">
+                                <?php foreach($tblKExpert as $a): ?>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?=$a->nama_users?>
+                                            <div class="float-right">
+                                                <?=$a->updated_date?>
+                                                <?php if($a->updated_by == $this->session->userdata('id_setting_users')): ?>
+                                                    <a class="btn btn-warning btn-xs" href="#" data-toggle="modal" data-target="#update-pendapat<?=$a->id_knowledge_expert?>"><i class="fas fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-xs" href="<?=base_url('Admin/Knowledge/Expert/Delete/'.$tblMHadits->id_master_hadits.'/'.$a->id_knowledge_expert)?>" onclick="return confirm('Apakah anda yakin ?')"><i class="fas fa-trash"></i></a>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><?=$a->knowledge?></p>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div><!-- /.container-fluid -->
     </div>

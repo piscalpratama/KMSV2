@@ -25,7 +25,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Histori Tes</h5>
-                            <div class="float-right"><a href="<?=base_url('Tes/Confirm')?>" onclick="return confirm('Apakah anda yakin akan melakukan tes ?')" class="btn btn-primary">Lakukan Tes</a></div>
+                            <div class="float-right">
+                                <?php if($last_test_id->level != $this->session->userdata('level')): ?>
+                                    <a href="<?=base_url('Tes/Confirm')?>" onclick="return confirm('Apakah anda yakin akan melakukan tes ?')" class="btn btn-primary">Lakukan Tes</a>
+                                <?php else: ?>
+                                    <a href="<?=base_url('Tes/NextLevel')?>" onclick="return confirm('Apakah anda yakin akan melanjutkan ke tes selanjutnya ?')" class="btn btn-success">Lanjutkan Tes Selanjutnya</a>
+                                <?php endif; ?>
+                            </div>
                             <p class="card-text">
                                 <?php if(!empty($tblHTest)): ?>
                                 <div class="table-responsive">
@@ -44,6 +50,9 @@
                                         <tr>
                                             <td align="center">
                                                 <a class="btn btn-primary btn-xs" href="<?=base_url('Tes/Detail/'.$a->id_histori_tes)?>"><i class="fas fa-bars"> Detail</i></a>
+                                                <?php if($a->level == $this->session->userdata('level')): ?>
+                                                    <a href="<?=base_url('Tes/Confirm')?>" onclick="return confirm('Apakah anda yakin akan melakukan tes ?')" class="btn btn-warning btn-xs"><i class="fas fa-redo">Ulangi Tes</i></a>
+                                                <?php endif; ?>
                                             </td>
                                             <td><?=$no++?></td>
                                             <td><?=$a->level?></td>
