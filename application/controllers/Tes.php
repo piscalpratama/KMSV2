@@ -302,7 +302,7 @@ class Tes extends CI_Controller {
       redirect('Tes/Exam');
     }
 
-    $command = escapeshellcmd("py ".FCPATH."file\py\submit_tes.py ".$this->session->userdata('id_users')." ".$this->session->userdata('level')." ".$tblHTest->id_histori_tes);
+    $command = escapeshellcmd("python3 ".FCPATH."file\py\submit_tes.py ".$this->session->userdata('id_users')." ".$this->session->userdata('level')." ".$tblHTest->id_histori_tes);
     $output = shell_exec($command);
     // echo $command;
     // exit();
