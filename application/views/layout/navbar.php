@@ -18,15 +18,18 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
-                    Internalisasi <i class="right fas fa-angle-down"></i>
+                    <?php lang('navbar_internalisasi')?> <i class="right fas fa-angle-down"></i>
                 </a>
                 <div class="dropdown-menu">
-                    <a href="<?=base_url('Hadits')?>" class="nav-link">Belajar</a>
-                    <a href="<?=base_url('Tes')?>" class="nav-link">Evaluasi</a>
+                    <a href="<?=base_url('Hadits')?>" class="nav-link"><?php lang('navbar_learning')?></a>
+                    <a href="<?=base_url('Tes')?>" class="nav-link"> <?php lang('navbar_evaluasi')?></a>
                 </div>
             </li>
             <li class="nav-item">
-                <a href="<?=base_url('Profil')?>" class="nav-link">Profil</a>
+                <a href="<?=base_url('Profil')?>" class="nav-link"><?php lang('navbar_profile')?></a>
+            </li>
+            <li class="nav-item nav-link">
+                <a href="<?=base_url(uri_string())?>/?lang=indonesia">Indonesia (IDN)</a> | <a href="<?=base_url(uri_string())?>/?lang=english">English (ENG)</a>
             </li>
         </ul>
     </div>
@@ -50,7 +53,6 @@
                     <div class="col-md-2">&nbsp;</div>
                     <div class="col-md-7">
                         <h5 class="widget-user-username"><?=$this->session->userdata('nama');?></h3>
-                        <h6 class="widget-user-desc">Mahasiswa</h5>
                     </div>
                 </div>
                 <a href="<?=base_url('Auth/Logout')?>" class="dropdown-item text-center">

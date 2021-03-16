@@ -10,19 +10,19 @@
       <?=form_open_multipart('Profil/Update/'.$tblKUsers->id_users)?>
       <div class="modal-body">
         <div class="form-group">
-            <label for="recipient-name" class="control-label">Nama :</label>
-            <input type="text" name="nama" class="form-control" placeholder="Nama" required="" value="<?=$tblKUsers->nama?>">
+            <label for="recipient-name" class="control-label"><?php lang('nama')?> :</label>
+            <input type="text" name="nama" class="form-control" required="" value="<?=$tblKUsers->nama?>">
         </div>
         <div class="form-group">
-            <label for="recipient-name" class="control-label">Tempat Lahir :</label>
-            <input type="text" name="tempat_lahir" class="form-control" placeholder="Tempat Lahir" required="" value="<?=$tblKProfil->tempat_lahir?>">
+            <label for="recipient-name" class="control-label"><?php lang('text_tmpt_lahir')?> :</label>
+            <input type="text" name="tempat_lahir" class="form-control" required="" value="<?=$tblKProfil->tempat_lahir?>">
         </div>
         <div class="form-group">
-            <label for="recipient-name" class="control-label">Tanggal Lahir :</label>
-            <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required="" value="<?=$tblKProfil->tgl_lahir?>">
+            <label for="recipient-name" class="control-label"><?php lang('text_tgl_lahir')?> :</label>
+            <input type="date" name="tgl_lahir" class="form-control" required="" value="<?=$tblKProfil->tgl_lahir?>">
         </div>
         <div class="form-group">
-          <label for="recipient-name" class="control-label">Jenis Kelamin :</label>
+          <label for="recipient-name" class="control-label"><?php lang('text_gender')?> :</label>
           <div class="row">
             <div class="input-group mb-3 col-md-6">
               <div class="input-group-prepend">
@@ -39,16 +39,16 @@
           </div>
         </div>
         <div class="form-group">
-            <label for="recipient-name" class="control-label">Foto :</label>
+            <label for="recipient-name" class="control-label"><?php lang('text_foto')?> :</label>
             <input type="file" name="foto" class="form-control" placeholder="Foto">
-            <div class="badge badge-warning">Upload ulang foto jika ingin dirubah.</div>
+            <div class="badge badge-warning"><?php lang('info_upload')?></div>
         </div>
         <div class="form-group">
-            <label for="recipient-name" class="control-label">No. Telp :</label>
-            <input type="text" name="no_telp" class="form-control" placeholder="No. Telpon" required="" value="<?=$tblKProfil->no_telp?>">
+            <label for="recipient-name" class="control-label"><?php lang('text_telp')?> :</label>
+            <input type="text" name="no_telp" class="form-control" required="" value="<?=$tblKProfil->no_telp?>">
         </div>
         <div class="form-group">
-            <label for="recipient-name" class="control-label">Alamat :</label>
+            <label for="recipient-name" class="control-label"><?php lang('text_alamat')?> :</label>
             <textarea name="alamat" class="form-control" required=""><?=$tblKProfil->alamat?></textarea>
         </div>
         <div class="form-group">
@@ -58,12 +58,12 @@
         <div class="form-group">
             <label for="recipient-name" class="control-label">Password :</label>
             <input type="password" name="password" class="form-control" placeholder="Password">
-            <div class="badge badge-warning">Isi password jika ingin dirubah.</div>
+            <div class="badge badge-warning"><?php lang('info_password')?></div>
         </div>
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
-        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><?php lang('text_close')?></button>
+        <button type="submit" class="btn btn-primary btn-sm"><?php lang('text_simpan')?></button>
       </div>
 			<?=form_close()?>
     </div>

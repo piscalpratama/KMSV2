@@ -50,5 +50,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<script src="<?=base_url()?>assets/js/adminlte.min.js"></script>
 
 		<?php $this->load->view($javascript); ?>
+		
+		<script type="text/javascript">
+			function googleTranslateElementInit() {
+				new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+			}
+		</script>
+
+		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 	</body>
 </html>

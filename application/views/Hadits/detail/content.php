@@ -4,11 +4,11 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"> Detail Hadits</h1>
+                    <h1 class="m-0 text-dark"> <?php lang('text_detail')?></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">Hadits</li>
+                        <li class="breadcrumb-item"><?php lang('text_hadits')?></li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div><!-- /.col -->
@@ -25,35 +25,35 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            Data Hadits
+                            Data <?php lang('text_hadits')?>
                         </div>
                         <div class="card-body">
                             <table class="table table-hover">
                                 <tr>
-                                    <th>Judul Hadits</th>
+                                    <th><?php lang('text_hadits')?></th>
                                     <td><?=$tblMHadits->hadits_name?></td>
                                 </tr>
                                 <tr>
-                                    <th>Bab</th>
+                                    <th><?php lang('text_bab')?></th>
                                     <td><?=$tblMHadits->bab_name?></td>
                                 </tr>
                                 <tr>
-                                    <th>Kitab</th>
+                                    <th><?php lang('text_kitab')?></th>
                                     <td><?=$tblMHadits->kitab_name?></td>
                                 </tr>
                                 <tr>
-                                    <th>Isi / Pembahasan Hadits</th>
+                                    <th><?php lang('text_isi')?></th>
                                     <td><pre style="white-space:pre-wrap;"><?=$tblMHadits->hadits_content?></pre></td>
                                 </tr>
                                 <tr>
-                                    <th>Arab / Link</th>
+                                    <th><?php lang('text_arab')?></th>
                                     <td><pre style="white-space:pre-wrap;"><?=$tblMHadits->hadits_arab?></pre></td>
                                 </tr>
                                 <tr>
-                                    <th>Keterangan</th>
+                                    <th><?php lang('text_keterangan')?></th>
                                     <td>
                                         <?php if($tblMHadits->keterangan == 'fixed'): ?>
-                                            <div class="badge badge-primary">fixed</div>
+                                            <div class="badge badge-primary">Kitab 9 Imam</div>
                                         <?php elseif($tblMHadits->keterangan == 'summarizing'): ?>
                                             <div class="badge badge-warning">summarizing</div>
                                         <?php endif; ?>
@@ -67,7 +67,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                Pendapat Ahli
+                                <?php lang('text_ahli')?>
                             </div>
                             <div class="card-body">
                                 <?php foreach($tblKExpert as $a): ?>

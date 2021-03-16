@@ -21,6 +21,11 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     </head>
     <body class="hold-transition login-page">
+        <div class="fixed-top" style="padding:50px">
+            <div class="float-right">
+                <?php lang('pilih_bahasa') ?> : <a href="<?=base_url()?>?lang=indonesia">Indonesia (IDN)</a> | <a href="<?=base_url()?>?lang=english">English (ENG)</a>
+            </div>
+        </div>
         <div class="login-box">
             <div class="login-logo">
                 <a href="<?=base_url()?>assets/index2.html"><b>Login</b>KMS</a>
@@ -67,7 +72,7 @@
                         <!-- /.col -->
                     </div>
                     <p class="mb-0">
-                        <a href="<?=base_url('Auth/Register')?>" class="text-center">Belum punya akun? daftar disini.</a>
+                        <a href="<?=base_url('Auth/Register')?>" class="text-center"><?php lang('register_text') ?></a>
                     </p>
                 </form>
                 </div>

@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">Tes</li>
+                        <li class="breadcrumb-item"><?php lang('text_tes')?></li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div><!-- /.col -->
@@ -25,14 +25,14 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Histori Jawaban</h5>
+                            <h5 class="card-title"><?php lang('text_histori_jawaban')?></h5>
                             <p class="card-text">
                                 <div class="table-responsive">
                                     <table id="dataTable" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Jawaban</th>
+                                        <th><?php lang('text_jawaban')?></th>
                                         <th>Nilai</th>
                                     </tr>
                                     </thead>
@@ -54,7 +54,7 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Histori Rekomendasi:</h5>
+                            <h5 class="card-title"><?php lang('text_histori_rekomendasi')?>:</h5>
                             <p class="card-text">
                                 <div class="table-responsive">
                                     <table id="dataTable" class="table table-bordered table-striped">
@@ -62,7 +62,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Bab</th>
-                                        <th>Hasil</th>
+                                        <th><?php lang('text_hasil')?></th>
                                     </tr>
                                     </thead>
                                     <tbody>

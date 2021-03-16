@@ -4,11 +4,11 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"> Profil</h1>
+                    <h1 class="m-0 text-dark"> <?php lang('navbar_profile')?></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Profil</li>
+                        <li class="breadcrumb-item active"><?php lang('navbar_profile')?></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -36,16 +36,16 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Histori Belajar:</h5>
+                            <h5 class="card-title"><?php lang('text_histori_belajar')?>:</h5>
                             <p class="card-text">
                                 <div class="table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>Hadits</th>
-                                                <th>Jumlah Baca</th>
-                                                <th>Tanggal Baca Terakhir</th>
+                                                <th><?php lang('text_hadits')?></th>
+                                                <th><?php lang('text_jumlah')?></th>
+                                                <th><?php lang('text_tanggal')?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -89,23 +89,23 @@
                                             <td class="text-right"><?=$tblKUsers->username?></td>
                                         </tr>
                                         <tr>
-                                            <th>Tanggal Lahir</th>
+                                            <th><?php lang('text_tgl_lahir')?></th>
                                             <td class="text-right"><?=$tblKProfil->tgl_lahir?></td>
                                         </tr>
                                         <tr>
-                                            <th>Tempat Lahir</th>
+                                            <th><?php lang('text_tmpt_lahir')?></th>
                                             <td class="text-right"><?=$tblKProfil->tempat_lahir?></td>
                                         </tr>
                                         <tr>
-                                            <th>Jenis Kelamin</th>
+                                            <th><?php lang('text_gender')?></th>
                                             <td class="text-right"><?=$tblKProfil->jenis_kelamin?></td>
                                         </tr>
                                         <tr>
-                                            <th>No. Telp</th>
+                                            <th><?php lang('text_telp')?></th>
                                             <td class="text-right"><?=$tblKProfil->no_telp?></td>
                                         </tr>
                                         <tr>
-                                            <th>Alamat</th>
+                                            <th><?php lang('text_alamat')?></th>
                                             <td class="text-right"><?=$tblKProfil->alamat?></td>
                                         </tr>
                                     </table>
@@ -117,7 +117,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Statistik Tes Terakhir:</h5>
+                            <h5 class="card-title"><?php lang('text_statistik_tes')?>:</h5>
                             <p class="card-text">
                                 <div id="container">
                                     <canvas id="pie-chart"></canvas>
@@ -127,33 +127,33 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Saran Belajar:</h5>
+                            <h5 class="card-title"><?php lang('text_saran')?>:</h5>
                             <p class="card-text">
                                 <?php if($tes_num == false): ?>
-                                    Anda belum melajakukan Tes evaluasi.
+                                    <?php lang('text_saran_belum_tes')?>
                                 <?php else: ?>
                                     <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
-                                        anda tidak mengalami kendala belajar<br>
-                                        Silahkan lakukan tes atau lanjutkan ke level tes selanjutnya.<br>
+                                        <?php lang('text_saran_tidak_mengalami')?><br>
+                                        <?php lang('text_saran_lanjut_level')?><br>
                                     <?php else: ?>
-                                        anda mengalami kendala belajar pada bab
+                                        <?php lang('text_saran_kendala')?>
                                         <?php foreach($rekomendasi_tidakpaham as $a){ echo $a['bab_name'].','; }?>
                                         <?php foreach($rekomendasi_kurangpaham as $a){ echo $a['bab_name'].','; }?>.
-                                        Sedangkan pada bab 
+                                        <?php lang('text_sedangkan')?>
                                         <?php foreach($rekomendasi_paham as $a){ echo $a['bab_name'].','; }?>
                                         <?php foreach($rekomendasi_sangatpaham as $a){ echo $a['bab_name'].','; }?>.
-                                        peserta belajar sudah dianggap paham.
+                                        <?php lang('text_saran_paham')?>.
                                         <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
                                         <?php else: ?>
-                                            Maka anda dapat memprioritaskan bab 
+                                            <?php lang('text_saran_prioritas')?> 
                                             <?php foreach($rekomendasi_tidakpaham as $a){ echo $a['bab_name'].','; }?>
                                             <?php foreach($rekomendasi_kurangpaham as $a){ echo $a['bab_name'].','; }?>
-                                            untuk dipelajari kembali.<br><br>
+                                            <?php lang('text_saran_pelajari')?>.<br><br>
                                         <?php endif; ?>
                                         <?php if(count($rekomendasi_tidakpaham) == 0 && count($rekomendasi_kurangpaham) == 0): ?>
-                                            Anda belum memahami bab yang telah disediakan, silahkan pelajari dan lakukan tes ulang untuk dapat melanjutkan ke bab selanjutnya.
+                                            <?php lang('text_saran_belum')?>
                                         <?php else: ?>
-                                            Anda dapat melanjutkan ke materi selanjutnya :<br>
+                                            <?php lang('text_saran_lanjut')?> :<br>
                                             <?php foreach($rekomendasi_selanjutnya1 as $a): ?>
                                                 <li><?=$a?></li>
                                             <?php endforeach ?>

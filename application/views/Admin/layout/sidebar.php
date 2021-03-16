@@ -138,6 +138,9 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+	        <div class="nav-link" id="google_translate_element"></div>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

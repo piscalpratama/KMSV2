@@ -21,9 +21,14 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     </head>
     <body class="hold-transition login-page">
+        <div class="fixed-top" style="padding:50px">
+            <div class="float-right">
+                <?php lang('pilih_bahasa') ?> : <a href="<?=base_url(uri_string());?>/?lang=indonesia">Indonesia (IDN)</a> | <a href="<?=base_url(uri_string());?>/?lang=english">English (ENG)</a>
+            </div>
+        </div>
         <div class="login-box">
             <div class="login-logo">
-                <a href="<?=base_url()?>assets/index2.html"><b>Daftar</b>KMS</a>
+                <a href="<?=base_url();?>"><b><?php lang('register')?></b>KMS</a>
             </div>
             <!-- /.login-logo -->
             <div class="card">
@@ -31,12 +36,12 @@
                 <?php $this->load->view('layout/notification'); ?>
                 <?php if($tblSLogin->setting != "AKTIF"): ?>
                     <div class="alert alert-info">
-                        Website sedang <?=$tblSLogin->setting?>
+                        <?php lang('login_info')?> <?=$tblSLogin->setting?>
                     </div>
                 <?php endif; ?>
                 <form action="<?=base_url('Auth/actionRegister')?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" name="nama" class="form-control" placeholder="Nama">
+                        <input type="text" name="nama" class="form-control" placeholder="<?php lang('nama')?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -78,12 +83,12 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                            <button type="submit" class="btn btn-primary btn-block"><?php lang('register_button')?></button>
                         </div>
                         <!-- /.col -->
                     </div>
                     <p class="mb-0">
-                        <a href="<?=base_url('Auth')?>" class="text-center">Sudah punya akun? login disini.</a>
+                        <a href="<?=base_url('Auth')?>" class="text-center"><?php lang('login_text')?></a>
                     </p>
                 </form>
                 </div>

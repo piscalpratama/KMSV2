@@ -4,5 +4,6 @@
 	Made with &hearts; by me
 	</div>
 	<!-- Default to the left -->
-	<strong>Copyright &copy; 2020 <a href="<?=base_url()?>">KMS</a>.</strong> All rights reserved.
+	<div id="google_translate_element"></div>
+	<strong>Copyright &copy; 2020 <a href="<?=base_url()?>">KMS</a>.</strong> All rights reserved. 
 </footer>
