@@ -26,7 +26,9 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php lang('text_histori')?></h5>
                             <div class="float-right">
-                                <?php if($last_test_id->level != $this->session->userdata('level')): ?>
+                                <?php if($last_test_id == '-'): ?>
+                                    <a href="<?=base_url('Tes/Confirm')?>" onclick="return confirm('Apakah anda yakin akan melakukan tes ?')" class="btn btn-primary"><?php lang('text_ujian')?></a>
+                                <?php elseif($last_test_id->level != $this->session->userdata('level')): ?>
                                     <a href="<?=base_url('Tes/Confirm')?>" onclick="return confirm('Apakah anda yakin akan melakukan tes ?')" class="btn btn-primary"><?php lang('text_ujian')?></a>
                                 <?php else: ?>
                                     <a href="<?=base_url('Tes/NextLevel')?>" onclick="return confirm('Apakah anda yakin akan melanjutkan ke tes selanjutnya ?')" class="btn btn-success"><?php lang('text_lanjut')?></a>
@@ -70,7 +72,7 @@
                                     </table>
                                 </div>
                                 <?php else: ?>
-                                    <div class="alert alert-warning"><?php lang('text_belum')?></div>
+                                    <div class="alert alert-warning"><?php lang('text_belum_tes')?></div>
                                 <?php endif; ?>
                             </p>
                         </div>

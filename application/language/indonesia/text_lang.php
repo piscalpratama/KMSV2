@@ -30,8 +30,8 @@ $lang['info_flow5'] = 'Lihat hasil tes dan rekomendasi yang diberikan dihalam de
 $lang['info_flow6'] = 'Anda bisa melihat roadmap knowledge hadits yang tersedia dihalaman profil.';
 
 //learning
-$lang['text_bab'] = 'Chapter';
-$lang['text_kitab'] = 'Book';
+$lang['text_bab'] = 'Bab';
+$lang['text_kitab'] = 'Kitab';
 $lang['text_keyword'] = 'Kata Kunci';
 $lang['text_selengkapnya'] = 'Selengkapnya';
 $lang['text_semua'] = 'Semua';
@@ -91,3 +91,4 @@ $lang['text_tutup'] = 'Tutup';
 
 //exam
 $lang['text_pertanyaan'] = 'Pertanyaan';
+$lang['text_selesaikan'] = 'Selesaikan Tes';

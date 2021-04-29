@@ -30,8 +30,8 @@ $lang['info_flow5'] = 'See the test results and recommendations given in the tes
 $lang['info_flow6'] = 'You can see the hadith knowledge roadmap available on the profile page.';
 
 //learning
-$lang['text_bab'] = 'Bab';
-$lang['text_kitab'] = 'Kitab';
+$lang['text_bab'] = 'Chapter';
+$lang['text_kitab'] = 'Book';
 $lang['text_keyword'] = 'Keyword';
 $lang['text_selengkapnya'] = 'More Details';
 $lang['text_semua'] = 'All';
