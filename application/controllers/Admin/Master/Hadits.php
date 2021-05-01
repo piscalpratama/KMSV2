@@ -294,7 +294,7 @@ class Hadits extends CI_Controller {
 		// 	$output = shell_exec($command);
 		// }
 		if($forum == 'mashara'){
-			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_mashara.py ".$url);
+			$command = escapeshellcmd("sudo ls");
 			$output = shell_exec($command);
 		}else if($forum == 'other1'){
 			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_other1.py ".$url);
