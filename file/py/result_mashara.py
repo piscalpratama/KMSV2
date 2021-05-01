@@ -51,9 +51,9 @@ kalimat = ' '.join(stop_plus)
 # 	n = len(stagging)
 
 # Skenario 2
-n = 7;
+n = 7
 if len(stagging) < 7:
-    n = len(stagging) - 1;
+    n = len(stagging) - 1
 
 if len(stagging) == 1:
     n = len(stagging)
