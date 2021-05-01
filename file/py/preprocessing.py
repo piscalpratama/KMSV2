@@ -42,7 +42,7 @@ def remove_stopwords(text):
 
     lots_of_stopwords = []
     
-    print(stopword_file)
+    print(stopword_file.read())
     for line in stopword_file.readlines():
         lots_of_stopwords.append(str(line.strip()))
     
