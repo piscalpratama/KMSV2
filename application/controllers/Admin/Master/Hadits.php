@@ -294,19 +294,19 @@ class Hadits extends CI_Controller {
 		// 	$output = shell_exec($command);
 		// }
 		if($forum == 'mashara'){
-			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_mashara.py ".$url." 2>&1";
 			//$command = "sudo python3 ".FCPATH."file/py/test.py 2>&1";
+			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_mashara.py ".$url." 2>&1";
 			exec($command, $output, $return_var);
 		}else if($forum == 'other1'){
-			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_other1.py ".$url);
-			$output = exec($command);
+			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_other1.py ".$url." 2>&1";
+			exec($command, $output, $return_var);
 		}else{
-			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_other2.py ".$url);
-			$output = exec($command);
+			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_other2.py ".$url." 2>&1";
+			exec($command, $output, $return_var);
 		}
-		var_dump($command);
-		var_dump($output);
-		exit();
+		// var_dump($command);
+		// var_dump($output);
+		// exit();
 		$data_summarizing = json_decode($output);
 		// var_dump($data_summarizing);
 		// exit();
