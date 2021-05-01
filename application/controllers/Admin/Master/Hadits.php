@@ -269,10 +269,10 @@ class Hadits extends CI_Controller {
         );
 		$data = array(
             'title'         => 'Tambah Knowledge | Admin KMS',
-			'content'       => 'Admin/Master/hadits/knowledge/content',
-            'css'           => 'Admin/Master/hadits/knowledge/css',
-            'javascript'    => 'Admin/Master/hadits/knowledge/javascript',
-			'modal'         => 'Admin/Master/hadits/knowledge/modal',
+			'content'       => 'Admin/Master/Hadits/knowledge/content',
+            'css'           => 'Admin/Master/Hadits/knowledge/css',
+            'javascript'    => 'Admin/Master/Hadits/knowledge/javascript',
+			'modal'         => 'Admin/Master/Hadits/knowledge/modal',
 			'tblMBab' => $this->Tbl_master_bab->read($rules)->result(),
 			'tblMKitab' => $this->Tbl_master_kitab->read($rules)->result(),
 		);
