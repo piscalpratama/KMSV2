@@ -11,7 +11,9 @@ import bss4
 
 url = sys.argv[1]
 
-web_link = bss4.get_text(url)
+# url = request.POST.get('web_link', None)
+#web_link = scrapapps.scrap_data(url)
+web_link = scrapping.scrap_data(url)
 
 #Get Title
 judul = scrapping.get_title(url)
@@ -19,7 +21,7 @@ judul = scrapping.get_title(url)
 raw_text = str(web_link)
 
 # Preprocessing View
-lower = preprocessing.text_lowercase(str(raw_text))
+lower = preprocessing.text_lowercase(str(web_link))
 rnumber = preprocessing.remove_numbers(lower)
 white_space = preprocessing.remove_whitespace(rnumber)
 stopword_list = preprocessing.remove_stopwords(white_space)
@@ -31,18 +33,27 @@ stop_plus = preprocessing.stopword_plus(new_sentence)
 kalimat = ' '.join(stop_plus)
 
 # Skenario 1
-n = 10;
-if len(stagging) < 10:
-    n = 5
 
-if len(stagging) == 10:
-    n = len(stagging) - 2
+# n = 10;
+# if len(stagging) < 10:
+# 	n = 5
 
-if len(stagging) > 30:
-    n = 15
+# if len(stagging) == 10:
+# 	n = len(stagging) - 2
 
-if len(stagging) < 5:
-    n = len(stagging) - 1
+# if len(stagging) > 30:
+# 	n = 15
+
+# if len(stagging) < 5:
+# 	n = len(stagging) - 1
+
+# if len(stagging) == 1:
+# 	n = len(stagging)
+
+# Skenario 2
+n = 7;
+if len(stagging) < 7:
+    n = len(stagging) - 1;
 
 if len(stagging) == 1:
     n = len(stagging)
@@ -66,7 +77,7 @@ ringkasan = preprocessing.remove_punctuation(text)
 
 
 # Panjang Plaintext
-len_raw = len(str(raw_text))
+len_raw = len(str(web_link))
 
 # Jumlah Text
 len_text = len(str(text))
@@ -77,8 +88,8 @@ len_kalimat = len(stagging)
 #Presentase Reduce
 presentase = round(((len_text/len_raw)*100))
 
-# Keyword Ekstrasi
-keyword = textrankkeyword.keywordTextrank(kalimat).split('\n')
+
+# keyphrases = textrankkeyword.extract_key_phrases(raw_text)
 
 data = {
     'raw_text' : raw_text,
@@ -97,4 +108,4 @@ data = {
     'keyword':'-',
 }
 
-print(json.dumps(data))
+print()

@@ -10,7 +10,7 @@ id_histori_tes = sys.argv[3]
 db = mysql.connect(
     host = "localhost",
     user = "root",
-    passwd = "",
+    passwd = "!!!1Sampai9!!!",
     database = "db_kms"
 )
 
