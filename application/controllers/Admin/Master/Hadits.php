@@ -30,10 +30,10 @@ class Hadits extends CI_Controller {
         );
 		$data = array(
             'title'         => 'Master Hadits | Admin KMS',
-			'content'       => 'Admin/Master/hadits/read/content',
-            'css'           => 'Admin/Master/hadits/read/css',
-            'javascript'    => 'Admin/Master/hadits/read/javascript',
-            'modal'         => 'Admin/Master/hadits/read/modal'
+			'content'       => 'Admin/Master/Hadits/read/content',
+            'css'           => 'Admin/Master/Hadits/read/css',
+            'javascript'    => 'Admin/Master/Hadits/read/javascript',
+            'modal'         => 'Admin/Master/Hadits/read/modal'
 		);
 		$this->load->view('Admin/index',$data);
 	}
@@ -47,10 +47,10 @@ class Hadits extends CI_Controller {
         );
 		$data = array(
             'title'         => 'Hadits (Kombinasi) | Admin KMS',
-			'content'       => 'Admin/Master/hadits/kombinasi/content',
-            'css'           => 'Admin/Master/hadits/kombinasi/css',
-            'javascript'    => 'Admin/Master/hadits/kombinasi/javascript',
-            'modal'         => 'Admin/Master/hadits/kombinasi/modal',
+			'content'       => 'Admin/Master/Hadits/kombinasi/content',
+            'css'           => 'Admin/Master/Hadits/kombinasi/css',
+            'javascript'    => 'Admin/Master/Hadits/kombinasi/javascript',
+            'modal'         => 'Admin/Master/Hadits/kombinasi/modal',
 			'tblMBab'		=> $this->Tbl_master_bab->read($rules)->result()
 		);
 		$this->load->view('Admin/index',$data);
@@ -93,10 +93,10 @@ class Hadits extends CI_Controller {
 		
 		$data = array(
             'title'         => 'List Hadits Kombinasi | Admin KMS',
-			'content'       => 'Admin/Master/hadits/detail_kombinasi/content',
-            'css'           => 'Admin/Master/hadits/detail_kombinasi/css',
-            'javascript'    => 'Admin/Master/hadits/detail_kombinasi/javascript',
-			'modal'         => 'Admin/Master/hadits/detail_kombinasi/modal',
+			'content'       => 'Admin/Master/Hadits/detail_kombinasi/content',
+            'css'           => 'Admin/Master/Hadits/detail_kombinasi/css',
+            'javascript'    => 'Admin/Master/Hadits/detail_kombinasi/javascript',
+			'modal'         => 'Admin/Master/Hadits/detail_kombinasi/modal',
 			'tblMHadits'	=> ($data_kosong == FALSE ? (!empty($tblMHadits)) ? $tblMHadits : NULL : NULL),
 			'tblMKitab'	=> $this->Tbl_master_kitab->read($rules2)->result(),
 			'bab_name'	=> $this->View_master_hadits->where($rules3)->row(),
@@ -125,10 +125,10 @@ class Hadits extends CI_Controller {
         );
 		$data = array(
             'title'         => 'Master Hadits | Admin KMS',
-			'content'       => 'Admin/Master/hadits/detail/content',
-            'css'           => 'Admin/Master/hadits/detail/css',
-            'javascript'    => 'Admin/Master/hadits/detail/javascript',
-			'modal'         => 'Admin/Master/hadits/detail/modal',
+			'content'       => 'Admin/Master/Hadits/detail/content',
+            'css'           => 'Admin/Master/Hadits/detail/css',
+            'javascript'    => 'Admin/Master/Hadits/detail/javascript',
+			'modal'         => 'Admin/Master/Hadits/detail/modal',
 			'tblMHadits'	=> $this->View_master_hadits->where($rules)->row(),
 			'tblMKitab'	=> $this->Tbl_master_kitab->read($rules2)->result(),
 			'tblMBab'	=> $this->Tbl_master_bab->read($rules2)->result(),
@@ -314,10 +314,10 @@ class Hadits extends CI_Controller {
         );
 		$data = array(
             'title'         => 'Search Knowledge | Admin KMS',
-			'content'       => 'Admin/Master/hadits/result_summarizing/content',
-            'css'           => 'Admin/Master/hadits/result_summarizing/css',
-            'javascript'    => 'Admin/Master/hadits/result_summarizing/javascript',
-			'modal'         => 'Admin/Master/hadits/result_summarizing/modal',
+			'content'       => 'Admin/Master/Hadits/result_summarizing/content',
+            'css'           => 'Admin/Master/Hadits/result_summarizing/css',
+            'javascript'    => 'Admin/Master/Hadits/result_summarizing/javascript',
+			'modal'         => 'Admin/Master/Hadits/result_summarizing/modal',
 			'data_summarizing' => $data_summarizing,
 			'tblMBab'		=> $this->Tbl_master_bab->read($rules)->result()
 		);
