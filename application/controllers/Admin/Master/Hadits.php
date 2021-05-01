@@ -296,7 +296,7 @@ class Hadits extends CI_Controller {
 		if($forum == 'mashara'){
 			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_mashara.py ".$url." 2>&1";
 			//$command = "sudo python3 ".FCPATH."file/py/test.py 2>&1";
-			$output = exec($command);
+			exec($command, $output, $return_var);
 		}else if($forum == 'other1'){
 			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_other1.py ".$url);
 			$output = exec($command);
