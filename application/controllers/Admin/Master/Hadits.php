@@ -294,14 +294,14 @@ class Hadits extends CI_Controller {
 		// 	$output = shell_exec($command);
 		// }
 		if($forum == 'mashara'){
-			$command = escapeshellcmd("sudo ls");
-			$output = shell_exec($command);
+			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_mashara.py ".$url);
+			$output = exec($command);
 		}else if($forum == 'other1'){
 			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_other1.py ".$url);
-			$output = shell_exec($command);
+			$output = exec($command);
 		}else{
 			$command = escapeshellcmd("sudo python3 ".FCPATH."file/py/result_other2.py ".$url);
-			$output = shell_exec($command);
+			$output = exec($command);
 		}
 		var_dump($command);
 		var_dump($output);
