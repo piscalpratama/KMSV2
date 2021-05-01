@@ -38,6 +38,7 @@ def remove_stopwords(text):
     # Ambil data stopword
     module_dir = os.path.dirname(__file__)
     file_path = os.path.join(module_dir, 'stopword.txt')
+    print(file_path)
     stopword_file = open(file_path, 'r')
 
     lots_of_stopwords = []
