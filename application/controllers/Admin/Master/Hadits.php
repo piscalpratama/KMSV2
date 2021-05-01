@@ -299,17 +299,17 @@ class Hadits extends CI_Controller {
 			$output = exec($command);
 		}else if($forum == 'other1'){
 			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_other1.py ".$url." 2>&1";
-			exec($command, $output, $return_var);
+			$output = exec($command);
 		}else{
 			$command = FCPATH."file/py/env/bin/python3 ".FCPATH."file/py/result_other2.py ".$url." 2>&1";
-			exec($command, $output, $return_var);
+			$output = exec($command);
 		}
 		// var_dump($command);
 		// var_dump($output);
 		// exit();
 		$data_summarizing = json_decode($output);
-		var_dump($data_summarizing);
-		exit();
+		// var_dump($data_summarizing);
+		// exit();
 		$rules = array(
             'select'    => null,
             'order'     => null,
