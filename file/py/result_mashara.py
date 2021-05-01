@@ -1,6 +1,9 @@
 import sys
 import json
 
+reload(sys)
+sys.setdefaultencoding("ISO-8859-1")
+
 import scrapapps
 import scrapping
 from textrank import TextRankSentences
