@@ -283,17 +283,29 @@ class Hadits extends CI_Controller {
 		$forum = $this->input->post('forum');
 		$url = $this->input->post('web_link');
 
+		// if($forum == 'mashara'){
+		// 	$command = escapeshellcmd("py ".FCPATH."file\py\\result_mashara.py ".$url);
+		// 	$output = shell_exec($command);
+		// }else if($forum == 'other1'){
+		// 	$command = escapeshellcmd("py ".FCPATH."file\py\\result_other1.py ".$url);
+		// 	$output = shell_exec($command);
+		// }else{
+		// 	$command = escapeshellcmd("py ".FCPATH."file\py\\result_other2.py ".$url);
+		// 	$output = shell_exec($command);
+		// }
 		if($forum == 'mashara'){
-			$command = escapeshellcmd("python3 ".FCPATH."file\py/result_mashara.py ".$url);
+			$command = escapeshellcmd("python3 ".FCPATH."file/py/result_mashara.py ".$url);
 			$output = shell_exec($command);
 		}else if($forum == 'other1'){
-			$command = escapeshellcmd("python3 ".FCPATH."file\py/result_other1.py ".$url);
+			$command = escapeshellcmd("python3 ".FCPATH."file/py/result_other1.py ".$url);
 			$output = shell_exec($command);
 		}else{
-			$command = escapeshellcmd("python3 ".FCPATH."file\py/result_other2.py ".$url);
+			$command = escapeshellcmd("python3 ".FCPATH."file/py/result_other2.py ".$url);
 			$output = shell_exec($command);
 		}
 		$data_summarizing = json_decode($output);
+		// var_dump($data_summarizing);
+		// exit();
 		$rules = array(
             'select'    => null,
             'order'     => null,
