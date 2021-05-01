@@ -303,6 +303,8 @@ class Hadits extends CI_Controller {
 			$command = escapeshellcmd("python3 ".FCPATH."file/py/result_other2.py ".$url);
 			$output = shell_exec($command);
 		}
+		var_dump($output);
+		exit();
 		$data_summarizing = json_decode($output);
 		// var_dump($data_summarizing);
 		// exit();
