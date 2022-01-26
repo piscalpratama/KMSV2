@@ -343,8 +343,7 @@ class Profil extends CI_Controller {
         $rules = array(
           'select'    => null,
           'where'     => array(
-            'created_by' => $this->session->userdata('id_users'),
-            'level' => $this->session->userdata('level'),
+            'created_by' => $this->session->userdata('id_users')
           ),
           'or_where'  => null,
           'order'     => null,
@@ -356,41 +355,43 @@ class Profil extends CI_Controller {
         // echo $tblHTest->num_rows();
         // exit();
         if($tblHTest->num_rows() > 0){
-          $tblHTest = $tblHTest->row();
-          $rules = array(
-            'select'    => null,
-            'where'     => array(
-              'id_master_bab' => $element->id,
-              'id_histori_tes' => $tblHTest->id_histori_tes,
-            ),
-            'or_where'  => null,
-            'order'     => null,
-            'limit'     => null,
-            'pagging'   => null,
-          );
-          $tblHRekomendasi = $this->Tbl_histori_rekomendasi->where($rules);
-          if($tblHRekomendasi->num_rows() > 0){
+          $tblHTest = $tblHTest->result();
+          foreach($tblHTest as $b){
             $rules = array(
               'select'    => null,
               'where'     => array(
                 'id_master_bab' => $element->id,
-                'id_histori_tes' => $tblHTest->id_histori_tes,
+                'id_histori_tes' => $b->id_histori_tes,
               ),
               'or_where'  => null,
               'order'     => null,
               'limit'     => null,
               'pagging'   => null,
             );
-            $tblHRekomendasi_row = $this->Tbl_histori_rekomendasi->where($rules)->row();
-            if($tblHRekomendasi_row->score > 75){
-              $color = 'green';
-            }else if($tblHRekomendasi_row->score > 50){
-              $color = 'orange';
+            $tblHRekomendasi = $this->Tbl_histori_rekomendasi->where($rules);
+            if($tblHRekomendasi->num_rows() > 0){
+              $rules = array(
+                'select'    => null,
+                'where'     => array(
+                  'id_master_bab' => $element->id,
+                  'id_histori_tes' => $b->id_histori_tes,
+                ),
+                'or_where'  => null,
+                'order'     => null,
+                'limit'     => null,
+                'pagging'   => null,
+              );
+              $tblHRekomendasi_row = $this->Tbl_histori_rekomendasi->where($rules)->row();
+              if($tblHRekomendasi_row->score > 75){
+                $color = 'green';
+              }else if($tblHRekomendasi_row->score > 50){
+                $color = 'orange';
+              }else{
+                $color = 'black';
+              }
             }else{
               $color = 'black';
             }
-          }else{
-            $color = 'black';
           }
         }else{
           $color = 'black';

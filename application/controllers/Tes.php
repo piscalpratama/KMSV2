@@ -364,6 +364,32 @@ class Tes extends CI_Controller {
     $rules = array(
       'select'    => null,
       'where'     => array(
+        'created_by' => $this->session->userdata('id_users')
+      ),
+      'or_where'  => null,
+      'order'     => 'score DESC',
+      'limit'     => null,
+      'pagging'   => null,
+    );
+    $tblHRekomendasi = $this->Tbl_histori_rekomendasi->where($rules)->result();
+    $tp = $kp = $p = $sp = 0;
+    foreach($tblHRekomendasi as $a){
+      if($a->score < 25):
+        $tp++;
+      elseif($a->score > 25 and $a->score <= 50):
+        $kp++;
+      elseif($a->score > 50 and $a->score <= 75):
+        $p++;
+      else:
+        $sp++;
+      endif;
+    }
+    if($p > 0){
+      
+    }
+    $rules = array(
+      'select'    => null,
+      'where'     => array(
         'id_users' => $this->session->userdata('id_users')
       ),
       'or_where'  => null,

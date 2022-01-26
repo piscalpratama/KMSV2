@@ -29,7 +29,8 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="control-label"><?php lang('text_bab')?> <?=$this->session->userdata('id_master_bab')?> :</label>
+                                        <label for="recipient-name" class="control-label"><?php lang('text_bab')?> :</label>
+                                        <?php $tblMBab = json_decode($tblMBab); ?>
                                         <select name="id_master_bab" class="form-control">
                                             <option value="semua"><?php lang('text_semua')?></option>
                                             <?php foreach($tblMBab as $a): ?>
@@ -40,7 +41,8 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="control-label"><?php lang('text_kitab')?> <?=$this->session->userdata('id_master_kitab')?> :</label>
+                                        <label for="recipient-name" class="control-label"><?php lang('text_kitab')?> :</label>
+                                        <?php $tblMKitab = json_decode($tblMKitab); ?>
                                         <select name="id_master_kitab" class="form-control">
                                             <option value="semua"><?php lang('text_semua')?></option>
                                             <?php foreach($tblMKitab as $a): ?>
@@ -57,37 +59,28 @@
                                 </div>
                             </div>
                             <?=form_close()?>
-                            <?=form_open('Hadits/Search')?>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="control-label"><?php lang('text_keyword')?> :</label>
-                                        <input type="text" name="keyword" class="form-control" value="<?=(!empty($this->session->userdata('keyword'))) ? $this->session->userdata('keyword') : ''?>">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="control-label">&nbsp;</label>
-                                        <button type="submit" class="btn btn-primary btn-block">Search</button>
-                                    </div>
-                                </div>
-                            </div>
                             <p class="card-text">
-                                <center>
-                                <div class="card-columns">
-                                <?php foreach($viewMHadits as $a): ?>
-                                    <div class="card" style="width: 80%;">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-justify"><a href="<?=base_url('Hadits/Detail/'.$a->id_master_hadits)?>" style="color: #000"><strong><?=$a->hadits_name?></strong><a></h5>
-                                            <p class="card-text text-justify"><?=substr($a->hadits_content, 0, 100)?>...<a href="<?=base_url('Hadits/Detail/'.$a->id_master_hadits)?>"><?php lang('text_selengkapnya')?></a></p>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
+                                <?php $viewMHadits = json_decode($viewMHadits); ?>
+                                <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th class="width: 10%">Judul Hadits</th>
+                                                <th>Isi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no=1; foreach($viewMHadits as $a): ?>
+                                            <tr>
+                                                <td><?=$no++?></td>
+                                                <td><a href="<?=base_url('Hadits/Detail/'.$a->id_master_hadits)?>" style="color: #000"><strong><?=$a->hadits_name?></strong><a></td>
+                                                <td><?=substr($a->hadits_content, 0, 200)?>...<a href="<?=base_url('Hadits/Detail/'.$a->id_master_hadits)?>"><?php lang('text_selengkapnya')?></a></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                </center>
-                                <nav aria-label="Page navigation">
-                                    <?=$this->pagination->create_links(); ?>
-                                </nav>
                             </p>
                         </div>
                     </div>
